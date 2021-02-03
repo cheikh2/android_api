@@ -5,35 +5,24 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.content.Intent;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.cm.gestionpharmacie.model.Emetteur;
+import com.cm.gestionpharmacie.UI.FairEnvoi;
 import com.cm.gestionpharmacie.model.Envoi;
-import com.cm.gestionpharmacie.model.Recepteur;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     SwipeRefreshLayout refresh;
     EnvoiAdapter envoiAdapter;
     Dialog dialog;
-    String url="http://192.168.42.12:8080/envoies";
+    String url="http://192.168.1.6:8080/envoies";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +41,16 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.envoisList);
         envois = new ArrayList<>();
         extractEnvoie();
+
+        FloatingActionButton fab = findViewById(R.id.doEnvoi);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, FairEnvoi.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void extractEnvoie() {
@@ -71,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
                         //System.out.println(Jarray);
                         //envoi.setEmetteur(Jarray);
                         //envoi.setRecepteur(envoiObjet.getJSONObject("recepteur"));
+                        /*JSONObject recepteurObjet = response.getJSONObject(i);
+                        Recepteur recepteur = new Recepteur();
+                        recepteur.setId(recepteurObjet.getInt("id"));*/
 
                         envois.add(envoi);
                     } catch (JSONException e) {
