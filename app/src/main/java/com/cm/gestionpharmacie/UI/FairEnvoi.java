@@ -38,7 +38,7 @@ public class FairEnvoi extends AppCompatActivity {
     SwipeRefreshLayout refresh;
     EnvoiAdapter envoiAdapter;
     Dialog dialog;
-    String urlAdd="http://192.168.42.12:8080/envoie";
+    String urlAdd="http://192.168.1.18:8080/envoie";
 
     private EditText montant, prenomEme, nomEme, cni, telephoneEme, prenomRec, nomRec, telephoneRec;
     private Button saveButton;
@@ -81,14 +81,14 @@ public class FairEnvoi extends AppCompatActivity {
             montant.requestFocus();
             return;
         }
-        if (TextUtils.isEmpty(myPrenomEme)){
-            prenomEme.setError("Remplir le prenom");
-            prenomEme.requestFocus();
-            return;
-        }
         if (TextUtils.isEmpty(myNomEme)){
             nomEme.setError("Remplir le nom");
             nomEme.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(myPrenomEme)){
+            prenomEme.setError("Remplir le prenom");
+            prenomEme.requestFocus();
             return;
         }
         if (TextUtils.isEmpty(myTelephoneEme)){
@@ -101,14 +101,14 @@ public class FairEnvoi extends AppCompatActivity {
             cni.requestFocus();
             return;
         }
-        if (TextUtils.isEmpty(myPrenomRec)){
-            prenomRec.setError("Remplir le prenom");
-            prenomRec.requestFocus();
-            return;
-        }
         if (TextUtils.isEmpty(myNomRec)){
             nomRec.setError("Remplir le nom");
             nomRec.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(myPrenomRec)){
+            prenomRec.setError("Remplir le prenom");
+            prenomRec.requestFocus();
             return;
         }
         if (TextUtils.isEmpty(myTelephoneRec)){

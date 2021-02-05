@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     SwipeRefreshLayout refresh;
     EnvoiAdapter envoiAdapter;
     Dialog dialog;
-    String url="http://192.168.42.12:8080/envoies";
+    String url="http://192.168.1.18:8080/envoies";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

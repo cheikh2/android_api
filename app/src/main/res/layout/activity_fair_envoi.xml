@@ -33,6 +33,16 @@
             android:textStyle="bold" />
 
     </RelativeLayout>
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button"
+        android:text="Valider"
+        android:textColor="#fff"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/montant"
@@ -106,15 +116,6 @@
         android:layout_marginRight="30dp"
         android:hint="Telephone recepteur" />
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/button"
-        android:text="Valider"
-        android:textColor="#fff"
-        android:textStyle="bold" />
+
 
 </LinearLayout>
